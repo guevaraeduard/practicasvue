@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.JS</title>
+
+</head>
+<body>
+
+    <!--Control absoluto de este div-->
+    <div id="myapp">
+        <h1>Estas son mis citas: <small>{{texto_nue}}</small></h1>
+        <!-- v-model: crea una relacion que matiene sincronizado los valores-->
+        <input
+          type="text"
+          v-model="texto_nue"
+          v-on:keypress.enter="addtexto">
+        <hr>
+        <ul>
+            <!-- Desestructuracion: ponemos los datos dentro de llaves y d esta forma acedemos sin hacer instancia a el.
+            Ejemplo: normal cita.author, cita.quote
+            desestructurado: en el v-for ponemos entre llaves los datos: {{author, quote}}
+            para luego acceder con el nombre de una ves -->
+            <li v-for="({author, quote}, index) in citas">
+                <span>{{index + 1}} - {{quote}}</span>
+                <blockquote>{{author}}</blockquote>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
